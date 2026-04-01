@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الهيكل التنظيمي الإداري</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+/* ═══════════════════════════════════════════════════════════
+   DESIGN: Corporate Professional — Light Navy Gold
+   RTL Arabic | Clean | Interactive | Formal
+═══════════════════════════════════════════════════════════ */
+
+/* ── TOKENS ── */
+:root {
+  --navy-950: #06111E;
+  --navy-900: #0B1E30;
+  --navy-800: #112840;
+  --navy-700: #163554;
+  --navy-600: #1C4470;
+  --navy-500: #225688;
+  --navy-400: #3A7AB5;
+  --navy-200: #A8C8E8;
+  --navy-100: #D8EAF6;
+  --navy-50:  #EEF5FB;
+
+  --gold-700: #8A6010;
+  --gold-600: #A87820;
+  --gold-500: #C49A30;
+  --gold-400: #E0B840;
+  --gold-300: #F0D070;
+  --gold-100: #FDF4DC;
+  --gold-50:  #FFFBF0;
+
+  --green-700: #145A2A;
+  --green-500: #1A7A3A;
+  --green-400: #22A050;
+  --green-100: #D6F0E0;
+
+  --red-500:   #C0280A;
+  --red-100:   #FDEAEA;
+
+  --surface:   #FFFFFF;
+  --bg:        #EFF4FA;
+  --bg-alt:    #E5EDF6;
+  --border:    #D0DCE8;
+  --border-lt: #E8EFF6;
+
+  --text-900:  #091828;
+  --text-700:  #1D3248;
+  --text-500:  #445E78;
+  --text-400:  #6A84A0;
+  --text-300:  #98B0C4;
+
+  --shadow-xs: 0 1px 3px rgba(6,17,30,.06);
+  --shadow-sm: 0 2px 8px rgba(6,17,30,.08);
+  --shadow-md: 0 4px 16px rgba(6,17,30,.10);
+  --shadow-lg: 0 8px 32px rgba(6,17,30,.13);
+  --shadow-xl: 0 16px 48px rgba(6,17,30,.18);
+
+  --r-sm:  6px;
+  --r-md:  10px;
+  --r-lg:  14px;
+  --r-xl:  20px;
+  --r-2xl: 28px;
+
+  --font-ar: 'IBM Plex Sans Arabic', sans-serif;
+  --t: .2s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── RESET ── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-ar);background:var(--bg);color:var(--text-900);min-height:100vh;padding-bottom:80px;-webkit-font-smoothing:antialiased}
+
+/* ═══════════════════════════════════════════════════════════
+   HEADER
+═══════════════════════════════════════════════════════════ */
+.site-header {
+  background: linear-gradient(135deg, var(--navy-950) 0%, var(--navy-800) 55%, var(--navy-700) 100%);
+  position: relative;
+  overflow: hidden;
+}
+/* Subtle diagonal stripe texture */
+.site-header::before {
+  content:'';
+  position:absolute;inset:0;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(255,255,255,.015) 0px, rgba(255,255,255,.015) 1px,
+    transparent 1px, transparent 10px
+  );
+  pointer-events:none;
+}
+/* Gold accent line at bottom */
+.site-header::after {
+  content:'';
+  position:absolute;
+  bottom:0;left:0;right:0;
+  height:3px;
+  background: linear-gradient(90deg,
+    transparent 0%, var(--gold-500) 20%,
+    var(--gold-300) 50%, var(--gold-500) 80%, transparent 100%
+  );
+}
+.header-inner {
+  display:flex;align-items:center;gap:20px;
+  padding:28px 48px 30px;
+  position:relative;z-index:1;
+}
+.header-emblem {
+  width:64px;height:64px;border-radius:50%;flex-shrink:0;
+  background:rgba(255,255,255,.06);
+  border:1.5px solid rgba(196,154,48,.35);
+  display:grid;place-items:center;
+  box-shadow:0 0 24px rgba(196,154,48,.15), inset 0 1px 0 rgba(255,255,255,.08);
+}
+.emblem-icon{font-size:30px;line-height:1}
+.header-text{flex:1}
+.header-title{
+  font-size:28px;font-weight:700;color:#FFFFFF;
+  letter-spacing:.5px;line-height:1.3;
+  text-shadow:0 2px 12px rgba(0,0,0,.3);
+}
+.header-sub{font-size:13px;color:rgba(255,255,255,.5);margin-top:6px;font-weight:300}
+
+/* ═══════════════════════════════════════════════════════════
+   TOOLBAR
+═══════════════════════════════════════════════════════════ */
+.toolbar {
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  padding:12px 48px;
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
+  box-shadow:var(--shadow-xs);
+}
+.refresh-btn {
+  font-family:var(--font-ar);
+  display:flex;align-items:center;gap:8px;
+  padding:8px 20px;
+  background:transparent;
+  border:1.5px solid var(--navy-500);
+  color:var(--navy-600);
+  border-radius:var(--r-md);
+  cursor:pointer;font-size:13px;font-weight:600;
+  transition:var(--t);letter-spacing:.3px;
+}
+.refresh-btn:hover{background:var(--navy-600);color:#fff;border-color:var(--navy-600);box-shadow:var(--shadow-sm)}
+.refresh-btn.loading{opacity:.5;pointer-events:none}
+#refreshIcon{font-size:16px;line-height:1;display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
+.toolbar-right{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-right:auto}
+.status-pill{
+  font-size:12px;font-weight:500;
+  padding:5px 14px;border-radius:999px;
+  background:var(--bg);color:var(--text-400);
+  border:1px solid var(--border);letter-spacing:.2px;
+}
+.status-pill.ok{color:var(--green-500);background:var(--green-100);border-color:rgba(26,122,58,.2)}
+.status-pill.err{color:var(--red-500);background:var(--red-100);border-color:rgba(192,40,10,.2)}
+.live-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--green-400);display:inline-block;margin-left:6px;
+  box-shadow:0 0 6px var(--green-400);
+  animation:livepulse 2s ease-in-out infinite;
+}
+@keyframes livepulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.last-update{font-size:11px;color:var(--text-300)}
+
+/* ═══════════════════════════════════════════════════════════
+   STATS ROW
+═══════════════════════════════════════════════════════════ */
+.stats-row {
+  display:flex;justify-content:center;flex-wrap:wrap;
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
+}
+.stat{
+  flex:1;min-width:120px;max-width:220px;
+  text-align:center;padding:18px 28px;
+  position:relative;cursor:default;
+  transition:background var(--t);
+}
+.stat:hover{background:var(--navy-50)}
+.stat+.stat::before{
+  content:'';position:absolute;
+  right:0;top:20%;bottom:20%;
+  width:1px;background:var(--border);
+}
+.stat-n{
+  font-size:30px;font-weight:700;
+  color:var(--navy-700);line-height:1;
+  letter-spacing:-1px;
+}
+.stat-l{
+  font-size:10px;color:var(--text-400);
+  margin-top:5px;letter-spacing:.8px;
+  text-transform:uppercase;font-weight:500;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SEARCH
+═══════════════════════════════════════════════════════════ */
+.search-wrap{
+  max-width:560px;margin:28px auto 0;
+  padding:0 20px;position:relative;
+}
+.s-icon{
+  position:absolute;left:36px;top:50%;
+  transform:translateY(-50%);
+  font-size:15px;opacity:.4;pointer-events:none;
+}
+.search-wrap input{
+  width:100%;padding:13px 20px 13px 46px;
+  background:var(--surface);
+  border:1.5px solid var(--border);
+  border-radius:var(--r-xl);
+  font-family:var(--font-ar);font-size:14px;
+  color:var(--text-900);outline:none;
+  transition:var(--t);
+  box-shadow:var(--shadow-xs);
+}
+.search-wrap input:focus{
+  border-color:var(--navy-400);
+  box-shadow:var(--shadow-sm),0 0 0 3px rgba(34,86,136,.1);
+}
+.search-wrap input::placeholder{color:var(--text-300)}
+.search-results{
+  position:absolute;top:calc(100% + 8px);
+  right:20px;left:20px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r-lg);
+  box-shadow:var(--shadow-xl);
+  display:none;max-height:340px;overflow-y:auto;z-index:200;
+}
+.search-results.visible{display:block}
+.search-results::-webkit-scrollbar{width:5px}
+.search-results::-webkit-scrollbar-thumb{background:var(--bg-alt);border-radius:3px}
+.sr-item{
+  display:flex;align-items:center;gap:12px;
+  padding:11px 16px;cursor:pointer;
+  border-bottom:1px solid var(--border-lt);
+  transition:background var(--t);
+}
+.sr-item:last-child{border-bottom:none}
+.sr-item:hover{background:var(--navy-50)}
+.sr-av{
+  width:36px;height:36px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--navy-700),var(--navy-500));
+  color:#fff;display:grid;place-items:center;
+  font-size:14px;font-weight:700;
+}
+.sr-name{font-size:13px;font-weight:600;color:var(--navy-700)}
+.sr-pos{font-size:11px;color:var(--text-400);margin-top:2px}
+
+/* ═══════════════════════════════════════════════════════════
+   TOP SECTION — CEO / ASST
+═══════════════════════════════════════════════════════════ */
+.top-section{
+  display:flex;flex-direction:column;align-items:center;
+  padding:36px 20px 10px;
+}
+.ceo-card{
+  background:linear-gradient(145deg,var(--navy-950),var(--navy-800));
+  color:#fff;
+  padding:24px 52px;
+  border-radius:var(--r-2xl);
+  text-align:center;
+  box-shadow:var(--shadow-xl);
+  border:1px solid rgba(196,154,48,.25);
+  min-width:300px;position:relative;overflow:hidden;
+}
+.ceo-card::before{
+  content:'';position:absolute;
+  top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold-400),transparent);
+}
+.ceo-icon{font-size:26px;margin-bottom:10px;opacity:.9}
+.ceo-pos{font-size:18px;font-weight:700;color:var(--gold-300);letter-spacing:.3px}
+.ceo-name{font-size:14px;color:rgba(255,255,255,.75);margin-top:6px;font-weight:400}
+.cv{width:2px;height:36px;background:linear-gradient(to bottom,var(--gold-500),var(--navy-200));margin:0 auto;border-radius:1px;opacity:.6}
+.asst-card{
+  background:var(--surface);
+  border:1.5px solid var(--navy-200);
+  padding:15px 36px;
+  border-radius:var(--r-xl);
+  text-align:center;
+  box-shadow:var(--shadow-md);
+  min-width:260px;
+}
+.asst-pos{font-size:13px;font-weight:700;color:var(--navy-700);margin-bottom:4px}
+.asst-name{font-size:12px;color:var(--text-500)}
+
+/* ═══════════════════════════════════════════════════════════
+   DEPARTMENT GRID
+═══════════════════════════════════════════════════════════ */
+.dept-grid{
+  display:flex;flex-wrap:wrap;justify-content:center;
+  gap:16px;padding:28px 28px 40px;
+  max-width:1700px;margin:0 auto;
+}
+.dept-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r-xl);
+  overflow:hidden;
+  box-shadow:var(--shadow-sm);
+  transition:transform var(--t),box-shadow var(--t),border-color var(--t);
+  cursor:pointer;
+  width:calc(33.33% - 12px);
+  min-width:290px;max-width:450px;
+}
+.dept-card:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--shadow-lg);
+  border-color:var(--navy-200);
+}
+.dept-card.open{
+  border-color:var(--navy-400);
+  width:100%;max-width:100%;
+  transform:none;
+  box-shadow:var(--shadow-lg);
+}
+
+/* Dept header */
+.dept-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 22px;gap:14px;
+  user-select:none;
+  transition:background var(--t);
+}
+.dept-header:hover{background:var(--navy-50)}
+.dept-card.open .dept-header{background:var(--navy-50);border-bottom:1px solid var(--border)}
+.dhr{display:flex;align-items:center;gap:14px;flex:1;min-width:0}
+.di{
+  width:52px;height:52px;border-radius:var(--r-md);
+  display:grid;place-items:center;
+  font-size:24px;flex-shrink:0;
+  box-shadow:var(--shadow-sm);
+  position:relative;overflow:hidden;
+}
+.di::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.2) 0%,transparent 60%);
+}
+.dept-info{flex:1;min-width:0}
+.dept-name{
+  font-size:15px;font-weight:700;color:var(--text-900);
+  line-height:1.4;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;
+}
+.dept-meta{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.dm-chip{
+  font-size:10px;font-weight:600;padding:2px 8px;
+  border-radius:999px;letter-spacing:.3px;
+}
+.dm-mgr{background:rgba(22,53,84,.1);color:var(--navy-700)}
+.dm-sup{background:rgba(196,154,48,.12);color:var(--gold-600)}
+.dm-emp{background:var(--green-100);color:var(--green-700)}
+
+.dept-toggle{
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  flex-shrink:0;
+}
+.toggle-count{
+  font-size:20px;font-weight:700;color:var(--navy-700);line-height:1;
+}
+.toggle-arrow{
+  font-size:11px;color:var(--text-300);
+  transition:transform var(--t);
+}
+.dept-card.open .toggle-arrow{transform:none}
+
+/* Dept body */
+.dept-body{
+  overflow:hidden;
+  transition:max-height .5s cubic-bezier(.4,0,.2,1);
+  background:var(--bg);
+}
+.no-heads-note{
+  text-align:center;font-size:12px;
+  color:var(--text-400);padding:12px 0 4px;
+  letter-spacing:.3px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   TREE
+═══════════════════════════════════════════════════════════ */
+.tree-wrap{
+  padding:32px 28px 28px;
+  overflow-x:auto;overflow-y:hidden;
+  text-align:center;
+}
+.tree-wrap::-webkit-scrollbar{height:6px}
+.tree-wrap::-webkit-scrollbar-track{background:var(--bg-alt);border-radius:3px}
+.tree-wrap::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.tree-wrap::-webkit-scrollbar-thumb:hover{background:var(--navy-200)}
+
+.t-node{display:inline-flex;flex-direction:column;align-items:center;vertical-align:top}
+
+/* CARDS */
+.t-card{
+  min-width:200px;max-width:200px;
+  padding:17px 15px 22px;
+  border-radius:var(--r-lg);
+  text-align:center;cursor:pointer;
+  transition:transform var(--t),box-shadow var(--t);
+  position:relative;user-select:none;white-space:normal;
+}
+.t-card:hover{transform:translateY(-3px)}
+
+.t-card.c-top{
+  background:linear-gradient(145deg,var(--navy-950),var(--navy-700));
+  color:#fff;border:1.5px solid rgba(196,154,48,.3);
+  box-shadow:var(--shadow-lg);
+}
+.t-card.c-top:hover{box-shadow:var(--shadow-xl),0 0 24px rgba(196,154,48,.15)}
+
+.t-card.c-mgr{
+  background:linear-gradient(145deg,var(--navy-800),var(--navy-600));
+  color:#fff;box-shadow:var(--shadow-md);
+  border:1px solid rgba(255,255,255,.08);
+}
+.t-card.c-mgr:hover{box-shadow:var(--shadow-lg)}
+
+.t-card.c-sup{
+  background:linear-gradient(145deg,var(--navy-600),var(--navy-400));
+  color:#fff;box-shadow:var(--shadow-md);
+  border:1px solid rgba(255,255,255,.1);
+}
+.t-card.c-sup:hover{box-shadow:var(--shadow-lg)}
+
+.t-card.c-emp{
+  background:linear-gradient(145deg,var(--green-700),var(--green-500));
+  color:#fff;box-shadow:var(--shadow-sm);
+  border:1px solid rgba(255,255,255,.1);
+}
+.t-card.c-emp:hover{box-shadow:var(--shadow-md)}
+
+.t-card .cp{font-size:14px;font-weight:700;line-height:1.45;color:#fff}
+.t-card.c-top .cp{font-size:15px;color:var(--gold-300)}
+.t-card .cn{font-size:12px;opacity:.85;margin-top:6px;line-height:1.5;font-weight:400}
+.t-card .cb{
+  font-size:10px;margin-top:9px;
+  background:rgba(255,255,255,.15);
+  padding:3px 10px;border-radius:999px;
+  display:inline-block;font-weight:500;
+}
+
+.t-card .badge{
+  position:absolute;top:-10px;left:-10px;
+  background:linear-gradient(135deg,#B04010,#D06020);
+  color:#fff;min-width:28px;height:28px;
+  border-radius:14px;display:flex;align-items:center;
+  justify-content:center;font-size:12px;font-weight:700;
+  padding:0 6px;box-shadow:0 3px 10px rgba(180,60,16,.45);
+  border:2px solid #fff;
+}
+.t-card .tbtn{
+  position:absolute;bottom:-15px;left:50%;
+  transform:translateX(-50%);
+  width:32px;height:32px;
+  background:var(--surface);
+  border:2px solid var(--border);
+  border-radius:50%;display:flex;
+  align-items:center;justify-content:center;
+  font-size:18px;font-weight:700;color:var(--text-400);
+  z-index:5;transition:var(--t);
+  box-shadow:var(--shadow-xs);line-height:1;
+}
+.t-card:hover .tbtn{border-color:var(--navy-400);color:var(--navy-600)}
+
+/* Connectors */
+.t-vline{
+  width:2px;height:34px;
+  background:linear-gradient(to bottom,var(--navy-300),var(--border));
+  margin:0 auto;flex-shrink:0;border-radius:1px;
+}
+.t-children{
+  display:inline-flex;justify-content:center;
+  align-items:flex-start;gap:20px;
+  position:relative;padding-top:34px;
+  flex-wrap:nowrap;min-width:max-content;
+}
+.t-children::before{
+  content:'';position:absolute;
+  top:0;right:0;left:0;height:2px;
+  background:var(--border);border-radius:1px;
+}
+.t-child{
+  display:inline-flex;flex-direction:column;
+  align-items:center;position:relative;vertical-align:top;flex:0 0 auto;
+}
+.t-child::before{
+  content:'';position:absolute;
+  top:-34px;left:50%;transform:translateX(-50%);
+  width:2px;height:34px;
+  background:var(--border);border-radius:1px;
+}
+.t-children.single::before{display:none}
+
+/* ═══════════════════════════════════════════════════════════
+   EMPLOYEE LIST
+═══════════════════════════════════════════════════════════ */
+.emp-list-wrap{
+  display:flex;flex-direction:column;align-items:center;
+  width:100%;padding-top:20px;
+}
+.emp-list{
+  width:min(100%,1000px);
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r-lg);
+  padding:18px;
+  box-shadow:var(--shadow-sm);
+}
+.emp-list-title{
+  font-size:11px;font-weight:700;color:var(--navy-600);
+  margin-bottom:14px;text-align:center;
+  letter-spacing:.8px;text-transform:uppercase;
+}
+.emp-items{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+  gap:8px;
+}
+.emp-item{
+  display:flex;align-items:center;gap:10px;
+  background:var(--bg);border:1px solid var(--border-lt);
+  border-radius:var(--r-md);padding:10px 12px;
+  transition:var(--t);
+}
+.emp-item:hover{background:var(--navy-50);border-color:var(--navy-100)}
+.emp-av{
+  width:36px;height:36px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--navy-700),var(--navy-400));
+  color:#fff;display:grid;place-items:center;
+  font-size:14px;font-weight:700;
+}
+.emp-main{flex:1;min-width:0}
+.emp-name{font-size:13px;font-weight:600;color:var(--text-700)}
+.emp-pos{font-size:11px;color:var(--text-400);margin-top:2px}
+.emp-branch{
+  font-size:10px;color:var(--navy-600);
+  background:var(--navy-50);border:1px solid var(--navy-100);
+  padding:3px 9px;border-radius:999px;
+  white-space:nowrap;flex-shrink:0;font-weight:600;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   DEPT ICON COLORS (15 variants)
+═══════════════════════════════════════════════════════════ */
+.dc-1{background:linear-gradient(135deg,#0E2A4A,#1A4070)}
+.dc-2{background:linear-gradient(135deg,#0F3A1A,#186028)}
+.dc-3{background:linear-gradient(135deg,#4A1010,#781818)}
+.dc-4{background:linear-gradient(135deg,#4A2000,#7A3400)}
+.dc-5{background:linear-gradient(135deg,#300A5A,#500A90)}
+.dc-6{background:linear-gradient(135deg,#004848,#007070)}
+.dc-7{background:linear-gradient(135deg,#2A1600,#4A2800)}
+.dc-8{background:linear-gradient(135deg,#0C2E80,#144EC0)}
+.dc-9{background:linear-gradient(135deg,#480C30,#780C50)}
+.dc-10{background:linear-gradient(135deg,#003830,#006050)}
+.dc-11{background:linear-gradient(135deg,#481400,#782400)}
+.dc-12{background:linear-gradient(135deg,#0E1268,#1A1EA0)}
+.dc-13{background:linear-gradient(135deg,#003840,#006070)}
+.dc-14{background:linear-gradient(135deg,#200A00,#401400)}
+.dc-15{background:linear-gradient(135deg,#1E0858,#380888)}
+
+/* ═══════════════════════════════════════════════════════════
+   LOADING & ERROR
+═══════════════════════════════════════════════════════════ */
+.loading-screen{
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:100px 20px;gap:0;
+}
+.loader-orbit{position:relative;width:72px;height:72px;margin-bottom:24px}
+.orbit-ring{
+  position:absolute;inset:0;border-radius:50%;
+  border:3px solid var(--border);
+  border-top-color:var(--navy-500);
+  border-right-color:var(--navy-300);
+  animation:spin .9s linear infinite;
+}
+.orbit-ring::before{
+  content:'';position:absolute;inset:7px;border-radius:50%;
+  border:2px solid transparent;
+  border-bottom-color:var(--gold-400);
+  animation:spin 1.5s linear infinite reverse;
+}
+.orbit-core{
+  position:absolute;inset:0;display:flex;
+  align-items:center;justify-content:center;
+  font-size:26px;opacity:.5;
+}
+.loading-text{font-size:14px;color:var(--text-400);font-weight:400}
+
+.error-screen{
+  text-align:center;padding:80px 24px;
+  max-width:560px;margin:0 auto;
+}
+.error-icon{font-size:48px;margin-bottom:16px}
+.error-screen h2{font-size:22px;color:var(--red-500);margin-bottom:12px;font-weight:700}
+.error-screen p{color:var(--text-400);font-size:13px;line-height:1.9}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════════ */
+@media(max-width:1200px){
+  .dept-card{width:calc(50% - 10px)}
+}
+@media(max-width:860px){
+  .header-inner{padding:20px 20px 22px}
+  .header-title{font-size:20px}
+  .toolbar{padding:10px 16px}
+  .dept-grid{padding:16px 12px 32px;gap:10px}
+  .dept-card{width:100%;max-width:100%;min-width:unset}
+  .stat{padding:14px 20px}
+  .stat-n{font-size:24px}
+  .t-card{min-width:170px;max-width:170px;padding:14px 11px 21px}
+  .t-card .cp{font-size:12px}
+  .t-card .cn{font-size:11px}
+  .t-children{gap:14px}
+  .tree-wrap{padding:24px 14px 20px}
+  .emp-items{grid-template-columns:1fr}
+  .ceo-card{padding:20px 30px;min-width:240px}
+}
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-emblem"><span class="emblem-icon">🏛️</span></div>
+      <div class="header-text">
+        <h1 class="header-title">الهيكل التنظيمي الإداري</h1>
+        <p class="header-sub">المخطط الهيكلي التنظيمي الرسمي للشركة &mdash; متصل بـ Google Sheet</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+    <button class="refresh-btn" id="refreshBtn" onclick="loadData()">
+      <span id="refreshIcon">↻</span>
+      <span>تحديث البيانات</span>
+    </button>
+    <div class="toolbar-right">
+      <span class="status-pill" id="statusText">جاري التحميل…</span>
+      <span class="last-update" id="lastUpdate"></span>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main id="mainContent">
+    <div class="loading-screen">
+      <div class="loader-orbit">
+        <div class="orbit-ring"></div>
+        <div class="orbit-core">🏛️</div>
+      </div>
+      <p class="loading-text">جاري تحميل البيانات من Google Sheet…</p>
+    </div>
+  </main>
+
+  <script>
+// ══════════════════════════════════════════════
+//  CONFIG
+// ══════════════════════════════════════════════
+const SHEET_ID = '1GjFYMDHBmf_ugxci0mecqvq9GBzFmAMI5ENSrmItl3E';
+const CSV_URL  = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=0`;
+
+// ══════════════════════════════════════════════
+//  STATE
+// ══════════════════════════════════════════════
+let DATA = [];
+let nm   = {};   // name  → employee
+let cm   = {};   // manager → [children names] — scoped by dept
+let exp  = new Set();   // expanded nodes
+let oD   = new Set();   // open departments
+
+// ══════════════════════════════════════════════
+//  KEY REGISTRY — avoids ALL onclick escaping issues
+//  Instead of embedding strings in onclick attributes,
+//  we store keys in a registry and reference by numeric id.
+// ══════════════════════════════════════════════
+let _keys = [];
+function regKey(val) {
+  const id = _keys.length;
+  _keys.push(val);
+  return id;
+}
+function getKey(id) { return _keys[id]; }
+
+// Reset registry on each render
+function resetKeys() { _keys = []; }
+
+// ══════════════════════════════════════════════
+//  DEPT ICONS
+// ══════════════════════════════════════════════
+const DEPT_ICONS = {
+  'الادارة':              '🏢',
+  'التسويق':              '📢',
+  'التصميم الداخلي':      '🎨',
+  'الحسابات':             '💰',
+  'القانونية':            '⚖️',
+  'المبيعات الحكومية':    '🏛️',
+  'المبيعات المباشرة':    '🤝',
+  'المخازن':              '📦',
+  'المشتريات':            '🛒',
+  'المشروع':              '📋',
+  'الموارد البشرية':      '👥',
+  'إدارة الجودة':         '✅',
+  'تكنلوجيا المعلومات':  '💻',
+  'خدمات ما بعد البيع':  '🔧',
+  'مبيعات الشركات':       '🏪',
+  'الادارة العامة':       '👔',
+};
+
+// ══════════════════════════════════════════════
+//  HTML ESCAPE (prevents XSS)
+// ══════════════════════════════════════════════
+function esc(s) {
+  if (s == null) return '';
+  return String(s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+// ══════════════════════════════════════════════
+//  CSV PARSER
+// ══════════════════════════════════════════════
+function parseCSV(text) {
+  const rows = [];
+  let cur = '', inQ = false, row = [];
+  text = text.replace(/\r\n/g,'\n').replace(/\r/g,'\n');
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (inQ) {
+      if (c==='"' && text[i+1]==='"') { cur+='"'; i++; }
+      else if (c==='"') inQ = false;
+      else cur += c;
+    } else {
+      if      (c==='"')  inQ = true;
+      else if (c===',')  { row.push(cur.trim()); cur=''; }
+      else if (c==='\n') { row.push(cur.trim()); rows.push(row); row=[]; cur=''; }
+      else cur += c;
+    }
+  }
+  if (cur || row.length) { row.push(cur.trim()); rows.push(row); }
+  return rows;
+}
+
+// ══════════════════════════════════════════════
+//  LOAD DATA
+// ══════════════════════════════════════════════
+async function loadData() {
+  const btn    = document.getElementById('refreshBtn');
+  const icon   = document.getElementById('refreshIcon');
+  const status = document.getElementById('statusText');
+
+  btn.classList.add('loading');
+  icon.textContent = '↻';
+  icon.style.display = 'inline-block';
+  icon.style.animation = 'spin .8s linear infinite';
+  status.textContent = 'جاري التحميل…';
+  status.className = 'status-pill';
+
+  try {
+    const resp = await fetch(CSV_URL);
+    if (!resp.ok) throw new Error('فشل الاتصال بـ Google Sheet');
+    const text = await resp.text();
+    const rows = parseCSV(text);
+    if (rows.length < 2) throw new Error('الملف فارغ');
+
+    const header = rows[0].map(h => h.replace(/\ufeff/g,'').trim().toLowerCase());
+    const iName   = header.findIndex(h => h.includes('employee')||h.includes('name')||h.includes('اسم'));
+    const iBranch = header.findIndex(h => h.includes('branch')||h.includes('فرع'));
+    const iDept   = header.findIndex(h => h.includes('department')||h.includes('dept')||h.includes('قسم'));
+    const iPos    = header.findIndex(h => h.includes('position')||h.includes('منصب')||h.includes('وظيفة'));
+    const iMgr    = header.findIndex(h => h.includes('manager')||h.includes('مدير'));
+
+    if (iName < 0) throw new Error('عمود الاسم غير موجود');
+    if (iDept < 0) throw new Error('عمود القسم غير موجود');
+
+    DATA = [];
+    for (let r = 1; r < rows.length; r++) {
+      const row  = rows[r];
+      const name = (row[iName]||'').trim();
+      if (!name) continue;
+      DATA.push({
+        name,
+        branch:   iBranch>=0 ? (row[iBranch]||'').trim() : '',
+        dept:     iDept>=0   ? (row[iDept]  ||'').trim() : '',
+        position: iPos>=0    ? (row[iPos]   ||'').trim() : '',
+        manager:  iMgr>=0    ? (row[iMgr]   ||'').trim()||null : null,
+      });
+    }
+
+    DATA.forEach(e => { if (e.manager===e.name) e.manager=null; });
+    buildMaps();
+    renderAll();
+
+    icon.style.animation = '';
+    status.innerHTML = `<span class="live-dot"></span> متصل — ${DATA.length} موظف`;
+    status.className = 'status-pill ok';
+    document.getElementById('lastUpdate').textContent =
+      'آخر تحديث: ' + new Date().toLocaleTimeString('ar-IQ');
+
+  } catch(err) {
+    console.error(err);
+    icon.style.animation = '';
+    status.textContent = '⚠️ ' + err.message;
+    status.className = 'status-pill err';
+    if (!DATA.length) {
+      document.getElementById('mainContent').innerHTML = `
+        <div class="error-screen">
+          <div class="error-icon">⚠️</div>
+          <h2>تعذر تحميل البيانات</h2>
+          <p>تأكد من مشاركة Google Sheet كـ "أي شخص لديه الرابط — مشاهد"<br>
+          ثم اضغط "تحديث البيانات" مجدداً</p>
+        </div>`;
+    }
+  }
+
+  btn.classList.remove('loading');
+}
+
+// ══════════════════════════════════════════════
+//  BUILD MAPS (dept-scoped children)
+// ══════════════════════════════════════════════
+function buildMaps() {
+  nm = {}; cm = {};
+  DATA.forEach(e => { nm[e.name] = e; });
+  DATA.forEach(e => {
+    if (!e.manager || e.manager===e.name) return;
+    const mgr = nm[e.manager];
+    if (!mgr) return;
+    if (mgr.dept !== e.dept) return; // dept-scoped
+    if (!cm[e.manager]) cm[e.manager] = [];
+    cm[e.manager].push(e.name);
+  });
+}
+
+// ══════════════════════════════════════════════
+//  HELPERS
+// ══════════════════════════════════════════════
+function getLevel(e) {
+  if (!e) return 'emp';
+  const p = e.position||'';
+  if (p.includes('المدير المفوض')||p.includes('مساعد المدير')) return 'top';
+  if (p.includes('مدير'))  return 'mgr';
+  if (p.includes('مشرف')||p.includes('رئيس')||p.includes('مسؤول الصندوق')) return 'sup';
+  return 'emp';
+}
+function cardCls(e) {
+  const l = getLevel(e);
+  return l==='top'?'c-top': l==='mgr'?'c-mgr': l==='sup'?'c-sup':'c-emp';
+}
+
+function getDeptHeads(dept) {
+  const members   = DATA.filter(e => e.dept===dept);
+  const memberSet = new Set(members.map(m => m.name));
+  return members.filter(m => {
+    if (!m.manager||m.manager===m.name) return true;
+    return !memberSet.has(m.manager);
+  });
+}
+
+// ══════════════════════════════════════════════
+//  RENDER TREE NODE
+// ══════════════════════════════════════════════
+function renderNode(name) {
+  const e = nm[name]; if (!e) return '';
+  const kids    = cm[name]||[];
+  const hasKids = kids.length > 0;
+  const isExp   = exp.has(name);
+
+  const nid = regKey(name);   // numeric id — no escaping needed
+
+  let h = '<div class="t-node">';
+  h += `<div class="t-card ${cardCls(e)}" data-nid="${nid}" onclick="toggleNode(getKey(${nid}))">`;
+  h += `<div class="cp">${esc(e.position||'—')}</div>`;
+  h += `<div class="cn">${esc(e.name)}</div>`;
+  if (e.branch) h += `<div class="cb">${esc(e.branch)}</div>`;
+  if (hasKids) {
+    h += `<span class="badge">${kids.length}</span>`;
+    h += `<div class="tbtn">${isExp?'−':'+'}</div>`;
+  }
+  h += '</div>';
+
+  if (hasKids && isExp) {
+    const empKids    = kids.filter(k => getLevel(nm[k])==='emp');
+    const nonEmpKids = kids.filter(k => getLevel(nm[k])!=='emp');
+
+    h += '<div class="t-vline"></div>';
+
+    if (nonEmpKids.length) {
+      h += `<div class="t-children${nonEmpKids.length===1?' single':''}">`;
+      nonEmpKids.forEach(k => { h += `<div class="t-child">${renderNode(k)}</div>`; });
+      h += '</div>';
+    }
+
+    if (empKids.length) {
+      h += '<div class="emp-list-wrap">';
+      if (!nonEmpKids.length) h += '<div class="t-vline"></div>';
+      h += '<div class="emp-list">';
+      h += `<div class="emp-list-title">👤 الموظفون المباشرون (${empKids.length})</div>`;
+      h += '<div class="emp-items">';
+      empKids.forEach(k => {
+        const x = nm[k];
+        h += `<div class="emp-item">
+          <div class="emp-av">${esc((x.name||'?')[0])}</div>
+          <div class="emp-main">
+            <div class="emp-name">${esc(x.name)}</div>
+            <div class="emp-pos">${esc(x.position||'موظف')}</div>
+          </div>
+          ${x.branch?`<div class="emp-branch">${esc(x.branch)}</div>`:''}
+        </div>`;
+      });
+      h += '</div></div></div>';
+    }
+  }
+  h += '</div>';
+  return h;
+}
+
+// ══════════════════════════════════════════════
+//  RENDER ALL
+// ══════════════════════════════════════════════
+function renderAll() {
+  resetKeys();  // reset key registry each render
+
+  const ceo  = DATA.find(e => !e.manager && e.position && e.position.includes('المدير المفوض'));
+  const asst = DATA.find(e => e.position && (e.position.includes('مساعد المدير')||e.position.includes('مساعد شخصي')));
+
+  const deptSet = new Set();
+  DATA.forEach(e => { if (e.dept && e.dept!=='الادارة العامة') deptSet.add(e.dept); });
+  const depts = [...deptSet].sort();
+
+  const deptMem = {};
+  DATA.forEach(e => { if (!deptMem[e.dept]) deptMem[e.dept]=[]; deptMem[e.dept].push(e); });
+
+  const mgrCount = DATA.filter(e=>getLevel(e)==='mgr'||getLevel(e)==='top').length;
+  const supCount = DATA.filter(e=>getLevel(e)==='sup').length;
+
+  let html = '';
+
+  // ── STATS ──
+  html += `<div class="stats-row">
+    <div class="stat"><div class="stat-n">${DATA.length}</div><div class="stat-l">إجمالي الموظفين</div></div>
+    <div class="stat"><div class="stat-n">${depts.length}</div><div class="stat-l">الأقسام</div></div>
+    <div class="stat"><div class="stat-n">${mgrCount}</div><div class="stat-l">المدراء</div></div>
+    <div class="stat"><div class="stat-n">${supCount}</div><div class="stat-l">المشرفون</div></div>
+  </div>`;
+
+  // ── SEARCH ──
+  html += `<div class="search-wrap">
+    <span class="s-icon">🔍</span>
+    <input type="text" id="si" placeholder="ابحث عن موظف أو منصب أو قسم…" oninput="onSearch(this.value)" autocomplete="off">
+    <div class="search-results" id="sr"></div>
+  </div>`;
+
+  // ── CEO & ASSISTANT ──
+  if (ceo || asst) {
+    html += '<div class="top-section">';
+    if (ceo) {
+      html += `<div class="ceo-card">
+        <div class="ceo-icon">👔</div>
+        <div class="ceo-pos">${esc(ceo.position)}</div>
+        <div class="ceo-name">${esc(ceo.name)}</div>
+      </div>`;
+    }
+    if (ceo && asst) html += '<div class="cv"></div>';
+    if (asst) {
+      html += `<div class="asst-card">
+        <div class="asst-pos">${esc(asst.position)}</div>
+        <div class="asst-name">${esc(asst.name)}</div>
+      </div>`;
+    }
+    html += '</div>';
+  }
+
+  // ── DEPARTMENTS ──
+  html += '<div class="dept-grid">';
+  depts.forEach((dept, i) => {
+    const members = deptMem[dept]||[];
+    if (!members.length) return;
+    const isOpen = oD.has(dept);
+    const icon   = DEPT_ICONS[dept]||'📁';
+    const ci     = (i % 15) + 1;
+
+    // ✅ FIX: use numeric registry id — no string escaping in onclick
+    const did = regKey(dept);
+
+    // Build member role stats
+    const mgrs = members.filter(m=>getLevel(m)==='mgr'||getLevel(m)==='top').length;
+    const sups = members.filter(m=>getLevel(m)==='sup').length;
+    const emps = members.filter(m=>getLevel(m)==='emp').length;
+
+    html += `<div class="dept-card ${isOpen?'open':''}" id="dp-${i}">`;
+
+    // Header (always visible)
+    html += `<div class="dept-header" onclick="toggleDept(getKey(${did}))">
+      <div class="dhr">
+        <div class="di dc-${ci}">${icon}</div>
+        <div class="dept-info">
+          <div class="dept-name">${esc(dept)}</div>
+          <div class="dept-meta">
+            ${mgrs?`<span class="dm-chip dm-mgr">${mgrs} مدير</span>`:''}
+            ${sups?`<span class="dm-chip dm-sup">${sups} مشرف</span>`:''}
+            ${emps?`<span class="dm-chip dm-emp">${emps} موظف</span>`:''}
+          </div>
+        </div>
+      </div>
+      <div class="dept-toggle">
+        <span class="toggle-count">${members.length}</span>
+        <span class="toggle-arrow">${isOpen?'▲':'▼'}</span>
+      </div>
+    </div>`;
+
+    // Body (only rendered when open)
+    html += `<div class="dept-body" style="${isOpen?'max-height:30000px':'max-height:0'}">`;
+    if (isOpen) {
+      html += '<div class="tree-wrap">';
+      const heads = getDeptHeads(dept);
+      if (heads.length === 0) {
+        // fallback: show all members as flat list
+        html += '<div class="no-heads-note">جميع الموظفين في هذا القسم:</div>';
+        html += '<div class="t-children">';
+        members.forEach(m => { html += `<div class="t-child">${renderNode(m.name)}</div>`; });
+        html += '</div>';
+      } else if (heads.length === 1) {
+        html += renderNode(heads[0].name);
+      } else {
+        html += `<div class="t-children${heads.length===1?' single':''}">`;
+        heads.forEach(m => { html += `<div class="t-child">${renderNode(m.name)}</div>`; });
+        html += '</div>';
+      }
+      html += '</div>';
+    }
+    html += '</div></div>';
+  });
+  html += '</div>';
+
+  document.getElementById('mainContent').innerHTML = html;
+  window._depts = depts;
+}
+
+// ══════════════════════════════════════════════
+//  INTERACTIONS
+// ══════════════════════════════════════════════
+function toggleDept(dept) {
+  if (oD.has(dept)) oD.delete(dept); else oD.add(dept);
+  renderAll();
+}
+function toggleNode(name) {
+  if (exp.has(name)) exp.delete(name); else exp.add(name);
+  renderAll();
+}
+
+function onSearch(v) {
+  const sr = document.getElementById('sr');
+  if (!sr||!v||v.length<2) { if(sr) sr.classList.remove('visible'); return; }
+  const res = DATA.filter(e =>
+    e.name.includes(v)||(e.position&&e.position.includes(v))||e.dept.includes(v)
+  ).slice(0,10);
+  if (!res.length) { sr.classList.remove('visible'); return; }
+  sr.classList.add('visible');
+
+  // Use registry for search items too
+  sr.innerHTML = res.map(x => {
+    const sid = regKey(x.name);
+    return `<div class="sr-item" onclick="openEmployee(getKey(${sid}))">
+      <div class="sr-av">${esc((x.name||'?')[0])}</div>
+      <div>
+        <div class="sr-name">${esc(x.name)}</div>
+        <div class="sr-pos">${esc(x.position||'')}${x.dept?' — '+esc(x.dept):''}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function openEmployee(name) {
+  const e = nm[name]; if (!e) return;
+  const si = document.getElementById('si');
+  const sr = document.getElementById('sr');
+  if (si) si.value = '';
+  if (sr) sr.classList.remove('visible');
+  oD.add(e.dept);
+  let cur = e.manager;
+  const vis = new Set();
+  while (cur && cur!==name && nm[cur] && !vis.has(cur)) {
+    vis.add(cur); exp.add(cur);
+    const p = nm[cur];
+    cur = (p.manager && p.manager!==p.name) ? p.manager : null;
+  }
+  renderAll();
+  setTimeout(() => {
+    const idx = (window._depts||[]).indexOf(e.dept);
+    const el  = document.getElementById('dp-'+idx);
+    if (el) el.scrollIntoView({ behavior:'smooth', block:'start' });
+  }, 80);
+}
+
+// ══════════════════════════════════════════════
+//  EXPOSE & INIT
+// ══════════════════════════════════════════════
+window.loadData     = loadData;
+window.toggleDept   = toggleDept;
+window.toggleNode   = toggleNode;
+window.onSearch     = onSearch;
+window.openEmployee = openEmployee;
+window.getKey       = getKey;   // must be global for inline onclick
+
+loadData();
+setInterval(loadData, 120_000);
+  </script>
+</body>
+</html>
