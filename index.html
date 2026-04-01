@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الهيكل التنظيمي الإداري</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="bg-pattern" aria-hidden="true"></div>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-emblem">
+        <div class="emblem-ring"><span class="emblem-icon">🏛️</span></div>
+      </div>
+      <div class="header-text">
+        <h1 class="header-title">الهيكل التنظيمي الإداري</h1>
+        <p class="header-sub">المخطط الهيكلي التنظيمي الرسمي للشركة &mdash; متصل بـ Google Sheet</p>
+      </div>
+    </div>
+    <div class="header-gold-line" aria-hidden="true"></div>
+  </header>
+
+  <div class="toolbar">
+    <button class="refresh-btn" id="refreshBtn" onclick="loadData()">
+      <span id="refreshIcon">↻</span>
+      <span>تحديث البيانات</span>
+    </button>
+    <div class="toolbar-right">
+      <span class="status-pill" id="statusText">جاري التحميل…</span>
+      <span class="last-update" id="lastUpdate"></span>
+    </div>
+  </div>
+
+  <main id="mainContent">
+    <div class="loading-screen" id="loadingScreen">
+      <div class="loader-orbit">
+        <div class="orbit-ring"></div>
+        <div class="orbit-core">🏛️</div>
+      </div>
+      <p class="loading-text">جاري تحميل البيانات من Google Sheet…</p>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
